@@ -1,33 +1,10 @@
 import Logo from '../assets/img/logo-tendo.png'
 
-import { useState } from 'react';
-
-import {Navbar, Container, Nav, NavDropdown, Modal} from 'react-bootstrap'
+import {Navbar, Container, Nav, NavDropdown} from 'react-bootstrap'
 import {NavLink} from 'react-router-dom'
 import {navLinks} from '../data/index';
 
 const NavbarComponents = () => {
-//     const [changeColor, setChangeColor] = useState(false);
-
-//   const changeBackgroundColor = () => {
-//     if(window.scrollY > 10) {
-//       setChangeColor(true);
-//     } else {
-//       setChangeColor(false);
-//     }
-//   };
-
-//   useEffect(() => {
-//     changeBackgroundColor();
-
-//     window.addEventListener('scroll', changeBackgroundColor);
-//   })
-
-
-const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
     return (
 
@@ -47,7 +24,7 @@ const [show, setShow] = useState(false);
                 </NavDropdown>
                     {navLinks.map((link) => {
                         return <div className='nav-link mx-3 pt-3' key={link.id}>
-                            <NavLink href={link.path} className='text-decoration-none' onClick={handleShow}>{link.text}</NavLink>
+                            <NavLink to={link.path} className='text-decoration-none'>{link.text}</NavLink>
                         </div>
                     })}
                 </Nav>
@@ -58,16 +35,6 @@ const [show, setShow] = useState(false);
                 </Navbar.Collapse>
             </Container>
     </Navbar>
-
-    <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-        </Modal.Header>
-        <Modal.Body className='text-center'>
-            <h1 className='text-secondary'><i className="fa-regular fa-face-frown-open"></i></h1>
-            <p className='text-secondary'>Yahhhh.. Fitur ini masih belum tersedia nih. Tunggu Developernya gak mager buat update yaa..</p>
-        </Modal.Body>
-        
-      </Modal>
     </div>
     )
 }
