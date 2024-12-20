@@ -259,6 +259,7 @@ const HomePages = () => {
                   className="btn btn-cta mx-lg-5 m-2 mt-3"
                   data-aos="fade-up"
                   data-aos-duration="1000"
+                  onClick={() => navigate("/LearnMore1")}
                 >
                   Learn More <i className="fa-solid fa-chevron-right"></i>
                 </a>
