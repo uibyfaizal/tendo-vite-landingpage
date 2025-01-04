@@ -1,8 +1,13 @@
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col, Card, Modal } from "react-bootstrap";
 import { productHome, testimonial } from "../data/index";
 
 import Material1Img from "../assets/img/material-img.png";
 import Material2Img from "../assets/img/material2-img.png";
+import Brand1 from "../assets/img/company-brand-logo/brand-1.png";
+import Brand2 from "../assets/img/company-brand-logo/brand-2.png";
+import Brand3 from "../assets/img/company-brand-logo/brand-3.png";
+import Brand4 from "../assets/img/company-brand-logo/brand-4.png";
+import Brand5 from "../assets/img/company-brand-logo/brand-5.png";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -14,10 +19,15 @@ import "swiper/css/pagination";
 // import required modules
 import { Pagination } from "swiper/modules";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const HomePages = () => {
   let navigate = useNavigate();
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <div>
       <div className="header">
@@ -48,65 +58,34 @@ const HomePages = () => {
         </Container>
       </div>
 
-      <div className="about">
-        <Container>
-          <Row>
-            <Col>
-              <h2
-                className="fw-bold"
-                data-aos="fade-up"
-                data-aos-duration="1000"
-              >
-                Why Choose Us?
-              </h2>
-            </Col>
-          </Row>
-
-          <div className="row pt-4 about-section">
-            <div
-              className="col-lg-4 card-about"
-              data-aos="fade-up"
-              data-aos-duration="1000"
-            >
-              <h5 className="pb-2">High-Quality Materials</h5>
-              <p>
-                We take pride in sourcing only the finest, durable materials to
-                ensure your furniture stands the test of time. From solid wood
-                to premium upholstery, every piece is crafted with a commitment
-                to sustainability and eco-friendliness, making it a perfect
-                choice for those who value both quality and the environment.
-              </p>
-            </div>
-            <div
-              className="col-lg-4 card-about"
-              data-aos="fade-up"
-              data-aos-duration="1000"
-            >
-              <h5 className="pb-2">Exclusive Designs</h5>
-              <p>
-                Our collection features exclusive designs that seamlessly blend
-                modern aesthetics with timeless elegance. Whether you are
-                looking for minimalistic pieces to complement a contemporary
-                home or intricate details that evoke a classic vibe, our
-                furniture is crafted to suit diverse tastes and interior styles
-                while standing out as statement pieces.
-              </p>
-            </div>
-            <div
-              className="col-lg-4 card-about"
-              data-aos="fade-up"
-              data-aos-duration="1000"
-            >
-              <h5 className="pb-2">Satisfaction Guarantee</h5>
-              <p>
-                We are committed to delivering not just quality furniture but
-                also a seamless shopping experience. Enjoy hassle-free ordering,
-                reliable support, fast delivery, and the added peace of mind
-                with our comprehensive warranty program.
-              </p>
+      <div className="company-brand">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-8 text-center mx-auto">
+              <h3 className="fw-bold">Some of our Trusted Company</h3>
             </div>
           </div>
-        </Container>
+
+          <div className="row">
+            <div className="col logo-container">
+              <div className="logo-item">
+                <img src={Brand1} alt="Brand 1" />
+              </div>
+              <div className="logo-item">
+                <img src={Brand2} alt="Brand 2" />
+              </div>
+              <div className="logo-item">
+                <img src={Brand3} alt="Brand 3" />
+              </div>
+              <div className="logo-item">
+                <img src={Brand4} alt="Brand 4" />
+              </div>
+              <div className="logo-item">
+                <img src={Brand5} alt="Brand 5" />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="product">
@@ -179,7 +158,10 @@ const HomePages = () => {
                         </div>
                         <div className="pricing">
                           <p className=" m-0">{product.price}</p>
-                          <button className="btn btn-dark m-0">
+                          <button
+                            className="btn btn-dark m-0"
+                            onClick={handleShow}
+                          >
                             {product.plus}
                           </button>
                         </div>
@@ -199,6 +181,22 @@ const HomePages = () => {
             </button>
           </Row>
         </div>
+
+        {/* Modal */}
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton></Modal.Header>
+          <Modal.Body>
+            Oops! It looks like you have to log in first to use this feature.
+          </Modal.Body>
+          <a
+            href=""
+            onClick={() => navigate("/login")}
+            className="btn btn-gotologin m-3 p-3 bg-dark text-white"
+          >
+            Go to Login
+          </a>
+        </Modal>
+        {/* End of Modal */}
       </div>
 
       <div className="material1">
@@ -293,6 +291,67 @@ const HomePages = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="about">
+        <Container>
+          <Row>
+            <Col>
+              <h2
+                className="fw-bold"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+              >
+                Why Choose Us?
+              </h2>
+            </Col>
+          </Row>
+
+          <div className="row pt-4 about-section">
+            <div
+              className="col-lg-4 card-about"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+            >
+              <h5 className="pb-2">High-Quality Materials</h5>
+              <p>
+                We take pride in sourcing only the finest, durable materials to
+                ensure your furniture stands the test of time. From solid wood
+                to premium upholstery, every piece is crafted with a commitment
+                to sustainability and eco-friendliness, making it a perfect
+                choice for those who value both quality and the environment.
+              </p>
+            </div>
+            <div
+              className="col-lg-4 card-about"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+            >
+              <h5 className="pb-2">Exclusive Designs</h5>
+              <p>
+                Our collection features exclusive designs that seamlessly blend
+                modern aesthetics with timeless elegance. Whether you are
+                looking for minimalistic pieces to complement a contemporary
+                home or intricate details that evoke a classic vibe, our
+                furniture is crafted to suit diverse tastes and interior styles
+                while standing out as statement pieces.
+              </p>
+            </div>
+            <div
+              className="col-lg-4 card-about"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+            >
+              <h5 className="pb-2">Satisfaction Guarantee</h5>
+              <p>
+                We are committed to delivering not just quality furniture but
+                also a seamless shopping experience. Enjoy hassle-free ordering,
+                reliable support, fast delivery, and the added peace of mind
+                with our comprehensive warranty program.
+              </p>
+            </div>
+          </div>
+        </Container>
       </div>
 
       <div className="review">

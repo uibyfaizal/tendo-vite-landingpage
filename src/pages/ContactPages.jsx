@@ -4,12 +4,14 @@ const ContactPages = () => {
       <div className="container">
         <div className="row">
           <div className="col">
-            <h5 className="text-danger">HALAMAN INI MASIH BELUM DI DESAIN, TUNGGU DI UPDATE YAA..</h5>
+            <h5 className="text-danger">
+              THIS PAGE IS STILL NOT DESIGNED YET, PLEASE WAIT FOR UPDATES...
+            </h5>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ContactPages
+export default ContactPages;
